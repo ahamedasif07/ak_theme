@@ -3,7 +3,11 @@
  * Theme URI:         https://example.com/fabled-sunset
  * Description:       Custom theme description...
  * Version:           1.0.0
+<<<<<<< HEAD
  * Author:            Asif Hosen
+=======
+ * Author:            Ahamed Asif
+>>>>>>> 205c129ac55b7ddd20584a37b7cdf25424762652
  * Author URI:        https://example.com
  * Tags:              block-patterns, full-site-editing
  * Text Domain:       asif_domain
@@ -14,8 +18,11 @@
  * License:           GNU General Public License v2.0 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  */
+<<<<<<< HEAD
 
 body {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
 }
+=======
+>>>>>>> 205c129ac55b7ddd20584a37b7cdf25424762652

@@ -250,6 +250,9 @@
   .mt-16 {
     margin-top: calc(var(--spacing) * 16);
   }
+  .mt-\[30px\] {
+    margin-top: 30px;
+  }
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
   }
@@ -294,6 +297,9 @@
   }
   .w-6 {
     width: calc(var(--spacing) * 6);
+  }
+  .w-7xl {
+    width: var(--container-7xl);
   }
   .w-40 {
     width: calc(var(--spacing) * 40);
@@ -391,6 +397,9 @@
   }
   .object-cover {
     object-fit: cover;
+  }
+  .object-fill {
+    object-fit: fill;
   }
   .p-6 {
     padding: calc(var(--spacing) * 6);
