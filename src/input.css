@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+/* ================================
+   Design Tokens (Tailwind v4)
+   ================================ */
+@theme {
+  /* ===============================
+     AK THEME – COLORS
+     =============================== */
+  --ak-color-header-bg: var(--ak-header-bg);
+  --ak-color-page-bg: var(--ak-page-bg);
+
+  /* ===============================
+     AK THEME – SPACING
+     =============================== */
+  --ak-spacing-section-y: var(--ak-section-padding-y);
+
+  /* ===============================
+     AK THEME – TYPOGRAPHY
+     =============================== */
+  --ak-text-align-page: var(--ak-page-text-align);
+}
