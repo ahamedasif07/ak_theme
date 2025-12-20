@@ -25,8 +25,9 @@
     <?php wp_head(); ?>
 </head>
 
-<body class="bg-[var(--ak-page-bg)]">
+<body class="bg-[var(--ak-page-bg)] ">
     <header class="bg-[var(--ak-header-bg)]">
+
         <!-- Navbar Here -->
     </header>
 

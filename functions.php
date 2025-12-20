@@ -41,8 +41,6 @@ function ak_theme_assets() {
 }
 add_action('wp_enqueue_scripts','ak_theme_assets');
 
-<<<<<<< HEAD
-
 // ===============================
 // AK Theme Customizer
 // ===============================
@@ -111,6 +109,23 @@ function ak_runtime_css_vars() {
     ?>;
     --ak-section-padding-y: 4rem;
     --ak-page-text-align: center;
+    --ak-box-padding-top: <?php echo esc_attr(get_theme_mod('ak_box_padding_top', 0));
+    ?>px;
+    --ak-box-padding-right: <?php echo esc_attr(get_theme_mod('ak_box_padding_right', 0));
+    ?>px;
+    --ak-box-padding-bottom: <?php echo esc_attr(get_theme_mod('ak_box_padding_bottom', 0));
+    ?>px;
+    --ak-box-padding-left: <?php echo esc_attr(get_theme_mod('ak_box_padding_left', 0));
+    ?>px;
+
+    --ak-box-margin-top: <?php echo esc_attr(get_theme_mod('ak_box_margin_top', 0));
+    ?>px;
+    --ak-box-margin-right: <?php echo esc_attr(get_theme_mod('ak_box_margin_right', 0));
+    ?>px;
+    --ak-box-margin-bottom: <?php echo esc_attr(get_theme_mod('ak_box_margin_bottom', 0));
+    ?>px;
+    --ak-box-margin-left: <?php echo esc_attr(get_theme_mod('ak_box_margin_left', 0));
+    ?>px;
 }
 </style>
 <?php
@@ -135,7 +150,7 @@ add_action('after_setup_theme', 'ak_register_menus');
 // ===============================
 function ak_add_nav_link_class($atts, $item, $args) {
     if ($args->theme_location == 'primary_menu') {
-        $atts['class'] = 'transition font-bold text-[16px] duration-300 hover:text-blue-600 block px-4';
+        $atts['class'] = 'transition font-bold text-[10px] duration-300 hover:text-blue-600 block px-4';
     }
     return $atts;
 }
@@ -148,7 +163,7 @@ function ak_nav_menu_item_classes($classes, $item, $args) {
     return $classes;
 }
 add_filter('nav_menu_css_class', 'ak_nav_menu_item_classes', 10, 3);
-=======
+
 add_action('wp_enqueue_scripts', 'ak_theme_assets');
 
 
@@ -190,4 +205,150 @@ function ak_customize_banner($wp_customize) {
 }
 
 add_action('customize_register', 'ak_customize_banner');
->>>>>>> 205c129ac55b7ddd20584a37b7cdf25424762652
+
+
+
+
+// ============================
+// About Card Section - Padding & Margin Control with Stepper
+// ============================
+function ak_box_customizer($wp_customize) {
+
+    // নতুন Section বানাচ্ছি
+    $wp_customize->add_section('about_card_section', array(
+        'title'    => __('About Card Settings', 'asif_domain'),
+        'priority' => 30,
+        'description' => 'Control padding and margin for About Card box.',
+    ));
+
+    // ==========================
+    // Padding Top
+    $wp_customize->add_setting('ak_box_padding_top', array(
+        'default' => 10, // px হিসাবে ডিফল্ট
+        'sanitize_callback' => 'absint', // positive integer
+    ));
+    $wp_customize->add_control('ak_box_padding_top', array(
+        'label' => __('Box Padding Top (px)', 'asif_domain'),
+        'section' => 'about_card_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 200,
+            'step' => 1,
+        ),
+    ));
+
+    // Padding Right
+    $wp_customize->add_setting('ak_box_padding_right', array(
+        'default' => 10,
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('ak_box_padding_right', array(
+        'label' => __('Box Padding Right (px)', 'asif_domain'),
+        'section' => 'about_card_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 200,
+            'step' => 1,
+        ),
+    ));
+
+    // Padding Bottom
+    $wp_customize->add_setting('ak_box_padding_bottom', array(
+        'default' => 10,
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('ak_box_padding_bottom', array(
+        'label' => __('Box Padding Bottom (px)', 'asif_domain'),
+        'section' => 'about_card_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 200,
+            'step' => 1,
+        ),
+    ));
+
+    // Padding Left
+    $wp_customize->add_setting('ak_box_padding_left', array(
+        'default' => 10,
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('ak_box_padding_left', array(
+        'label' => __('Box Padding Left (px)', 'asif_domain'),
+        'section' => 'about_card_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 200,
+            'step' => 1,
+        ),
+    ));
+
+    // ==========================
+    // Margin Top
+    $wp_customize->add_setting('ak_box_margin_top', array(
+        'default' => 10,
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('ak_box_margin_top', array(
+        'label' => __('Box Margin Top (px)', 'asif_domain'),
+        'section' => 'about_card_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 200,
+            'step' => 1,
+        ),
+    ));
+
+    // Margin Right
+    $wp_customize->add_setting('ak_box_margin_right', array(
+        'default' => 10,
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('ak_box_margin_right', array(
+        'label' => __('Box Margin Right (px)', 'asif_domain'),
+        'section' => 'about_card_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 200,
+            'step' => 1,
+        ),
+    ));
+
+    // Margin Bottom
+    $wp_customize->add_setting('ak_box_margin_bottom', array(
+        'default' => 10,
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('ak_box_margin_bottom', array(
+        'label' => __('Box Margin Bottom (px)', 'asif_domain'),
+        'section' => 'about_card_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 200,
+            'step' => 1,
+        ),
+    ));
+
+    // Margin Left
+    $wp_customize->add_setting('ak_box_margin_left', array(
+        'default' => 10,
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control('ak_box_margin_left', array(
+        'label' => __('Box Margin Left (px)', 'asif_domain'),
+        'section' => 'about_card_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 200,
+            'step' => 1,
+        ),
+    ));
+}
+add_action('customize_register', 'ak_box_customizer');
