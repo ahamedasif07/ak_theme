@@ -18,10 +18,37 @@ function ak_theme_assets() {
     // Custom CSS
     wp_enqueue_style(
         'custom-css',
-        get_template_directory_uri() . '/css/custom.css',
+        get_template_directory_uri() . '/src/custom.css',
         array('tailwind-css'),
         '1.0.0'
     );
+
+
+    // Navbar scroll JS
+    wp_enqueue_script(
+        'ak-navbar-scroll',
+        get_template_directory_uri() . '/src/js/NavBar.js',
+        array(),
+        '1.0',
+        true
+    );
+
+
+// Swiper CSS
+wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css');
+
+// Swiper JS
+wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js', array(), null, true);
+
+// Slider init JS (তোমার custom js)
+wp_enqueue_script(
+    'ak-slider-init',
+    get_template_directory_uri() . '/src/js/swper.js',
+    array('swiper-js'), // dependency ঠিকভাবে
+    '1.0',
+    true
+);
+
 
     // AOS CSS
     wp_enqueue_style(

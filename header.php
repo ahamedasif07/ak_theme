@@ -25,6 +25,11 @@
     <?php wp_head(); ?>
 </head>
 
+
+
+
+
+
 <body class="bg-[var(--ak-page-bg)] ">
     <header class="bg-[var(--ak-header-bg)]">
 
@@ -35,7 +40,7 @@
 
     <!-- nav items -->
     <!-- Navbar -->
-    <nav class="bg-gray-200 shadow-md">
+    <nav id="main-navbar" class="bg-gray-200 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
 
@@ -147,6 +152,8 @@
             </ul>
         </div>
     </nav>
+
+
 
     <!-- JS -->
     <script>
