@@ -4,42 +4,56 @@
 // ===============================
 function ak_theme_assets() {
 
-    // Theme main style.css
+    // Theme CSS
+    wp_enqueue_style('ak-style', get_stylesheet_uri());
+
+    // Tailwind
     wp_enqueue_style(
-        'ak-style',
-        get_stylesheet_uri(),
+        'tailwind-css',
+        get_template_directory_uri() . '/src/output.css',
         array(),
-        '1.0.0',
-        'all'
+        '1.0.0'
     );
 
     // Custom CSS
     wp_enqueue_style(
         'custom-css',
         get_template_directory_uri() . '/css/custom.css',
-        array(),
-        '1.0.0',
-        'all'
-    );
-    
-    // Tailwind output CSS
-    wp_enqueue_style(
-        'tailwind-css',
-        get_template_directory_uri() . '/src/output.css',
-        array(),
-        '1.0.0',
-        'all'
+        array('tailwind-css'),
+        '1.0.0'
     );
 
-    // Google Fonts
+    // AOS CSS
     wp_enqueue_style(
-        'roboto-font',
-        'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap',
+        'aos-css',
+        'https://unpkg.com/aos@2.3.1/dist/aos.css',
         array(),
-        null
+        '2.3.1'
+    );
+
+    // AOS JS
+    wp_enqueue_script(
+        'aos-js',
+        'https://unpkg.com/aos@2.3.1/dist/aos.js',
+        array(),
+        '2.3.1',
+        true
+    );
+
+    // AOS Init (DOM ready safe)
+    wp_add_inline_script(
+        'aos-js',
+        'document.addEventListener("DOMContentLoaded", function () {
+            AOS.init({
+                duration: 1000,
+                easing: "ease-in-out",
+                once: true
+            });
+        });'
     );
 }
-add_action('wp_enqueue_scripts','ak_theme_assets');
+add_action('wp_enqueue_scripts', 'ak_theme_assets');
+
 
 // ===============================
 // AK Theme Customizer
@@ -352,3 +366,11 @@ function ak_box_customizer($wp_customize) {
     ));
 }
 add_action('customize_register', 'ak_box_customizer');
+
+
+// anamation aosenque
+function ak_enqueue_aos_assets() {
+
+ 
+}
+add_action('wp_enqueue_scripts', 'ak_enqueue_aos_assets');

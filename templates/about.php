@@ -5,7 +5,7 @@ Template Name: About Page
 get_header(); // Include header.php
 ?>
 
-<section class="max-w-6xl mx-auto mt-16 p-6 bg-white rounded-lg shadow-lg">
+<section class="max-w-6xl mx-auto mt-16 p-6 bg-white rounded-lg shadow-lg overflow-hidden">
 
     <!-- Header -->
     <div class="text-center mb-12">
@@ -41,35 +41,50 @@ get_header(); // Include header.php
         ],
     ];
     ?>
-
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+
         <?php foreach($about_cards as $index => $card): ?>
+
         <?php
-            // Hover background color switch
-            switch($index) {
-                case 0: $hoverClass = 'hover:bg-red-100'; break;
-                case 1: $hoverClass = 'hover:bg-green-100'; break;
-                case 2: $hoverClass = 'hover:bg-blue-100'; break;
-                default: $hoverClass = 'hover:bg-yellow-100'; break;
-            }
+        switch($index) {
+            case 0: $hoverClass = 'hover:bg-red-100'; break;
+            case 1: $hoverClass = 'hover:bg-green-100'; break;
+            case 2: $hoverClass = 'hover:bg-blue-100'; break;
+            default: $hoverClass = 'hover:bg-yellow-100'; break;
+        }
         ?>
 
-        <div class="<?php echo $hoverClass; ?> transform transition duration-300 rounded-lg border
-            [padding-top:var(--ak-box-padding-top)]
-            [padding-right:var(--ak-box-padding-right)]
-            [padding-bottom:var(--ak-box-padding-bottom)]
-            [padding-left:var(--ak-box-padding-left)]
-            [margin-top:var(--ak-box-margin-top)]
-            [margin-right:var(--ak-box-margin-right)]
-            [margin-bottom:var(--ak-box-margin-bottom)]
-            [margin-left:var(--ak-box-margin-left)]
-            hover:scale-105
-        " style="background-color: <?php echo esc_attr($card['bg']); ?>;">
-            <h2 class="text-2xl font-bold text-gray-800 mb-3"><?php echo esc_html($card['title']); ?></h2>
-            <p class="text-gray-700"><?php echo esc_html($card['content']); ?></p>
+        <!-- AOS wrapper (ONLY animation) -->
+        <div data-aos="fade-up" data-aos-delay="<?php echo $index * 200; ?>" data-aos-anchor-placement="top-bottom">
+
+            <!-- UI / Hover wrapper -->
+            <div class="<?php echo $hoverClass; ?>
+    rounded-lg border
+    transition-all duration-500 ease-in-out
+    transform-gpu
+    hover:scale-[1.04]
+    hover:shadow-xl
+    [padding-top:var(--ak-box-padding-top)]
+    [padding-right:var(--ak-box-padding-right)]
+    [padding-bottom:var(--ak-box-padding-bottom)]
+    [padding-left:var(--ak-box-padding-left)]
+    [margin-top:var(--ak-box-margin-top)]
+    [margin-right:var(--ak-box-margin-right)]
+    [margin-bottom:var(--ak-box-margin-bottom)]
+    [margin-left:var(--ak-box-margin-left)]
+" style="background-color: <?php echo esc_attr($card['bg']); ?>;">
+                <h2 class="text-2xl font-bold mb-3">
+                    <?php echo esc_html($card['title']); ?>
+                </h2>
+                <p><?php echo esc_html($card['content']); ?></p>
+            </div>
+
         </div>
+
         <?php endforeach; ?>
+
     </div>
+
 
 
     <!-- Call to Action -->
