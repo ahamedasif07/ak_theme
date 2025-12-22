@@ -182,11 +182,29 @@ function ak_runtime_css_vars()
             --card_description_font_size: <?php echo esc_attr(get_theme_mod('ak_card_description_size', 16));
                                             ?>px;
 
+
+            /*colore pikker design change  */
+
+
         }
     </style>
 <?php
 }
 add_action('wp_head', 'ak_runtime_css_vars');
+
+function ak_customizer_styles()
+{
+?>
+    <style>
+        /* Card Description input field Font Size Adjustment */
+        .asif-input-change {
+            height: 70px !important;
+        }
+    </style>
+<?php
+}
+add_action('customize_controls_print_styles', 'ak_customizer_styles');
+
 
 
 

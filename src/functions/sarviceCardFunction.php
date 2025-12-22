@@ -93,9 +93,10 @@ function ak_custom_card_section($wp_customize)
         'settings'    => 'ak_card_description_size',
         'type'        => 'number',
         'input_attrs' => array(
-            'min'  => 10,
-            'max'  => 40,
-            'step' => 1,
+            'class' => 'asif-input-change', // custom class
+            'min'   => 10,
+            'max'   => 40,
+            'step'  => 1,
         ),
     ));
 
