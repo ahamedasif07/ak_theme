@@ -1,15 +1,18 @@
 <?php
 function ak_custom_card_section($wp_customize)
 {
-
-    // Add Section
+    // =========================
+    // Section
+    // =========================
     $wp_customize->add_section('ak_card_customize_section', array(
         'title'       => __('Customize Card', 'asif_domain'),
         'description' => __('Customize card from here', 'asif_domain'),
         'priority'    => 160,
     ));
 
-    // Card Title Text
+    // =========================
+    // Card Title
+    // =========================
     $wp_customize->add_setting('ak_card_title_setting', array(
         'default'           => __('Default Card Title', 'asif_domain'),
         'sanitize_callback' => 'sanitize_text_field',
@@ -22,7 +25,28 @@ function ak_custom_card_section($wp_customize)
         'type'     => 'text',
     ));
 
+    // Card title Font Size
+    // =========================
+    $wp_customize->add_setting('ak_card_title_size', array(
+        'default'           => 16, // default 16px
+        'sanitize_callback' => 'absint',
+    ));
+
+    $wp_customize->add_control('ak_card_title_size_control', array(
+        'label'       => __('title Font Size (px)', 'asif_domain'),
+        'section'     => 'ak_card_customize_section',
+        'settings'    => 'ak_card_title_size',
+        'type'        => 'number',
+        'input_attrs' => array(
+            'min'  => 10,
+            'max'  => 40,
+            'step' => 1,
+        ),
+    ));
+
+    // =========================
     // Card Title Color
+    // =========================
     $wp_customize->add_setting('ak_card_title_color', array(
         'default'           => '#000000',
         'sanitize_callback' => 'sanitize_hex_color',
@@ -39,19 +63,61 @@ function ak_custom_card_section($wp_customize)
             )
         )
     );
+
+    // =========================
+    // Card Description
+    // =========================
+    $wp_customize->add_setting('ak_card_description_setting', array(
+        'default'           => __('This is default card description.', 'asif_domain'),
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+
+    $wp_customize->add_control('ak_card_description_control', array(
+        'label'    => __('Card Description', 'asif_domain'),
+        'section'  => 'ak_card_customize_section',
+        'settings' => 'ak_card_description_setting',
+        'type'     => 'textarea',
+    ));
+
+    // =========================
+    // Card Description Font Size
+    // =========================
+    $wp_customize->add_setting('ak_card_description_size', array(
+        'default'           => 16, // default 16px
+        'sanitize_callback' => 'absint',
+    ));
+
+    $wp_customize->add_control('ak_card_description_size_control', array(
+        'label'       => __('Description Font Size (px)', 'asif_domain'),
+        'section'     => 'ak_card_customize_section',
+        'settings'    => 'ak_card_description_size',
+        'type'        => 'number',
+        'input_attrs' => array(
+            'min'  => 10,
+            'max'  => 40,
+            'step' => 1,
+        ),
+    ));
+
+
+    // =========================
+    // Card Image
+    // =========================
+    $wp_customize->add_setting('ak_card_image_setting', array(
+        'default'           => get_template_directory_uri() . '/images/banner.png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'ak_card_image_control',
+            array(
+                'label'    => __('Card Image', 'asif_domain'),
+                'section'  => 'ak_card_customize_section',
+                'settings' => 'ak_card_image_setting',
+            )
+        )
+    );
 }
 add_action('customize_register', 'ak_custom_card_section');
-
-// Hide hex input field in color picker
-function ak_customizer_hide_color_input()
-{
-?>
-    <style>
-        .wp-picker-input-wrap {
-            display: none !important;
-        }
-    </style>
-<?php
-}
-add_action('customize_controls_print_styles', 'ak_customizer_hide_color_input');
-?>
