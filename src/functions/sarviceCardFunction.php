@@ -99,6 +99,26 @@ function ak_custom_card_section($wp_customize)
         ),
     ));
 
+    // Card description Color
+    // =========================
+    $wp_customize->add_setting('ak_card_description_color', array(
+        'default'           => '#000000',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control(
+            $wp_customize,
+            'ak_card_description_color_control',
+            array(
+                'label'    => __('Card description Color', 'asif_domain'),
+                'section'  => 'ak_card_customize_section',
+                'settings' => 'ak_card_description_color',
+            )
+        )
+    );
+
 
     // =========================
     // Card Image
@@ -116,6 +136,24 @@ function ak_custom_card_section($wp_customize)
                 'label'    => __('Card Image', 'asif_domain'),
                 'section'  => 'ak_card_customize_section',
                 'settings' => 'ak_card_image_setting',
+            )
+        )
+    );
+    // hover Card Image
+    // =========================
+    $wp_customize->add_setting('ak_card_hover_image_setting', array(
+        'default'           => get_template_directory_uri() . '/images/banner (2).png',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'ak_card_hover_image_control',
+            array(
+                'label'    => __('Card Hover Image', 'asif_domain'),
+                'section'  => 'ak_card_customize_section',
+                'settings' => 'ak_card_hover_image_setting',
             )
         )
     );

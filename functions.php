@@ -145,42 +145,45 @@ add_action('customize_register', 'ak_theme_customize');
 function ak_runtime_css_vars()
 {
 ?>
-<style>
-:root {
-    --ak-header-bg: #020617;
-    --ak-page-bg: <?php echo esc_attr(get_theme_mod('ak_bg_color', '#ffffff'));
-    ?>;
-    --ak-section-padding-y: 4rem;
-    --ak-page-text-align: center;
+    <style>
+        :root {
+            --ak-header-bg: #020617;
+            --ak-page-bg: <?php echo esc_attr(get_theme_mod('ak_bg_color', '#ffffff'));
+                            ?>;
+            --ak-section-padding-y: 4rem;
+            --ak-page-text-align: center;
 
-    --ak-box-padding-top: <?php echo esc_attr(get_theme_mod('ak_box_padding_top', 0));
-    ?>px;
-    --ak-box-padding-right: <?php echo esc_attr(get_theme_mod('ak_box_padding_right', 0));
-    ?>px;
-    --ak-box-padding-bottom: <?php echo esc_attr(get_theme_mod('ak_box_padding_bottom', 0));
-    ?>px;
-    --ak-box-padding-left: <?php echo esc_attr(get_theme_mod('ak_box_padding_left', 0));
-    ?>px;
+            --ak-box-padding-top: <?php echo esc_attr(get_theme_mod('ak_box_padding_top', 0));
+                                    ?>px;
+            --ak-box-padding-right: <?php echo esc_attr(get_theme_mod('ak_box_padding_right', 0));
+                                    ?>px;
+            --ak-box-padding-bottom: <?php echo esc_attr(get_theme_mod('ak_box_padding_bottom', 0));
+                                        ?>px;
+            --ak-box-padding-left: <?php echo esc_attr(get_theme_mod('ak_box_padding_left', 0));
+                                    ?>px;
 
-    --ak-box-margin-top: <?php echo esc_attr(get_theme_mod('ak_box_margin_top', 0));
-    ?>px;
-    --ak-box-margin-right: <?php echo esc_attr(get_theme_mod('ak_box_margin_right', 0));
-    ?>px;
-    --ak-box-margin-bottom: <?php echo esc_attr(get_theme_mod('ak_box_margin_bottom', 0));
-    ?>px;
-    --ak-box-margin-left: <?php echo esc_attr(get_theme_mod('ak_box_margin_left', 0));
-    ?>px;
+            --ak-box-margin-top: <?php echo esc_attr(get_theme_mod('ak_box_margin_top', 0));
+                                    ?>px;
+            --ak-box-margin-right: <?php echo esc_attr(get_theme_mod('ak_box_margin_right', 0));
+                                    ?>px;
+            --ak-box-margin-bottom: <?php echo esc_attr(get_theme_mod('ak_box_margin_bottom', 0));
+                                    ?>px;
+            --ak-box-margin-left: <?php echo esc_attr(get_theme_mod('ak_box_margin_left', 0));
+                                    ?>px;
 
-    /* Card title css */
-    --card_title_color: <?php echo esc_attr(get_theme_mod('ak_card_title_color', '#000000'));
-    ?>;
-    --card_title_font_size: <?php echo esc_attr(get_theme_mod('ak_card_title_size', 24));
-    ?>px;
-    --card_description_font_size: <?php echo esc_attr(get_theme_mod('ak_card_description_size', 16));
-    ?>px;
+            /* Card title css */
+            --card_title_color: <?php echo esc_attr(get_theme_mod('ak_card_title_color', '#000000'));
+                                ?>;
+            --card_title_font_size: <?php echo esc_attr(get_theme_mod('ak_card_title_size', 24));
+                                    ?>px;
+            /* Card description css */
+            --card_description_color: <?php echo esc_attr(get_theme_mod('ak_card_description_color', '#000000'));
+                                        ?>;
+            --card_description_font_size: <?php echo esc_attr(get_theme_mod('ak_card_description_size', 16));
+                                            ?>px;
 
-}
-</style>
+        }
+    </style>
 <?php
 }
 add_action('wp_head', 'ak_runtime_css_vars');
