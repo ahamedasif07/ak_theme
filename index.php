@@ -31,7 +31,7 @@ $slides = [
     <!-- Swiper Slider -->
     <section class="max-w-6xl mx-auto mt-12">
         <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper ">
                 <?php foreach ($slides as $slide): ?>
                 <div class="swiper-slide relative rounded-lg overflow-hidden">
                     <img src="<?php echo esc_url($slide->image); ?>" alt="<?php echo esc_attr($slide->title); ?>"

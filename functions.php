@@ -2,7 +2,8 @@
 // ===============================
 // AK Theme Assets
 // ===============================
-function ak_theme_assets() {
+function ak_theme_assets()
+{
 
     // Theme CSS
     wp_enqueue_style('ak-style', get_stylesheet_uri());
@@ -34,20 +35,20 @@ function ak_theme_assets() {
     );
 
 
-// Swiper CSS
-wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css');
+    // Swiper CSS
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css');
 
-// Swiper JS
-wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js', array(), null, true);
+    // Swiper JS
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js', array(), null, true);
 
-// Slider init JS (তোমার custom js)
-wp_enqueue_script(
-    'ak-slider-init',
-    get_template_directory_uri() . '/src/js/swper.js',
-    array('swiper-js'), // dependency ঠিকভাবে
-    '1.0',
-    true
-);
+    // Slider init JS (তোমার custom js)
+    wp_enqueue_script(
+        'ak-slider-init',
+        get_template_directory_uri() . '/src/js/swper.js',
+        array('swiper-js'), // dependency ঠিকভাবে
+        '1.0',
+        true
+    );
 
 
     // AOS CSS
@@ -85,7 +86,8 @@ add_action('wp_enqueue_scripts', 'ak_theme_assets');
 // ===============================
 // AK Theme Customizer
 // ===============================
-function ak_theme_customize($wp_customize) {
+function ak_theme_customize($wp_customize)
+{
 
     // Header Image
     $wp_customize->add_section('ak_theme_header_image', array(
@@ -133,7 +135,6 @@ function ak_theme_customize($wp_customize) {
             )
         )
     );
-
 }
 add_action('customize_register', 'ak_theme_customize');
 
@@ -141,34 +142,41 @@ add_action('customize_register', 'ak_theme_customize');
 // ===============================
 // AK Runtime CSS Variables
 // ===============================
-function ak_runtime_css_vars() {
-    ?>
-<style>
-:root {
-    --ak-header-bg: #020617;
-    --ak-page-bg: <?php echo esc_attr(get_theme_mod('ak_bg_color', '#ffffff'));
-    ?>;
-    --ak-section-padding-y: 4rem;
-    --ak-page-text-align: center;
-    --ak-box-padding-top: <?php echo esc_attr(get_theme_mod('ak_box_padding_top', 0));
-    ?>px;
-    --ak-box-padding-right: <?php echo esc_attr(get_theme_mod('ak_box_padding_right', 0));
-    ?>px;
-    --ak-box-padding-bottom: <?php echo esc_attr(get_theme_mod('ak_box_padding_bottom', 0));
-    ?>px;
-    --ak-box-padding-left: <?php echo esc_attr(get_theme_mod('ak_box_padding_left', 0));
-    ?>px;
+function ak_runtime_css_vars()
+{
+?>
+    <style>
+        :root {
+            --ak-header-bg: #020617;
+            --ak-page-bg: <?php echo esc_attr(get_theme_mod('ak_bg_color', '#ffffff'));
+                            ?>;
+            --ak-section-padding-y: 4rem;
+            --ak-page-text-align: center;
+            --ak-box-padding-top: <?php echo esc_attr(get_theme_mod('ak_box_padding_top', 0));
+                                    ?>px;
+            --ak-box-padding-right: <?php echo esc_attr(get_theme_mod('ak_box_padding_right', 0));
+                                    ?>px;
+            --ak-box-padding-bottom: <?php echo esc_attr(get_theme_mod('ak_box_padding_bottom', 0));
+                                        ?>px;
+            --ak-box-padding-left: <?php echo esc_attr(get_theme_mod('ak_box_padding_left', 0));
+                                    ?>px;
 
-    --ak-box-margin-top: <?php echo esc_attr(get_theme_mod('ak_box_margin_top', 0));
-    ?>px;
-    --ak-box-margin-right: <?php echo esc_attr(get_theme_mod('ak_box_margin_right', 0));
-    ?>px;
-    --ak-box-margin-bottom: <?php echo esc_attr(get_theme_mod('ak_box_margin_bottom', 0));
-    ?>px;
-    --ak-box-margin-left: <?php echo esc_attr(get_theme_mod('ak_box_margin_left', 0));
-    ?>px;
-}
-</style>
+            --ak-box-margin-top: <?php echo esc_attr(get_theme_mod('ak_box_margin_top', 0));
+                                    ?>px;
+            --ak-box-margin-right: <?php echo esc_attr(get_theme_mod('ak_box_margin_right', 0));
+                                    ?>px;
+            --ak-box-margin-bottom: <?php echo esc_attr(get_theme_mod('ak_box_margin_bottom', 0));
+                                    ?>px;
+            --ak-box-margin-left: <?php echo esc_attr(get_theme_mod('ak_box_margin_left', 0));
+                                    ?>px;
+
+            /* card titler css */
+            --card_title_color: <?php echo esc_attr(get_theme_mod('ak_card_title_color', '#000000'));
+                                ?>;
+            --card_title_font_size: <?php echo esc_attr(get_theme_mod('ak_card_title_size', 24));
+                                    ?>px;
+        }
+    </style>
 <?php
 }
 add_action('wp_head', 'ak_runtime_css_vars');
@@ -177,7 +185,8 @@ add_action('wp_head', 'ak_runtime_css_vars');
 // ===============================
 // AK Theme Menus
 // ===============================
-function ak_register_menus() {
+function ak_register_menus()
+{
     register_nav_menus(array(
         'primary_menu' => __('Primary Menu', 'asif_domain'),
         'footer_menu'  => __('Footer Menu', 'asif_domain'),
@@ -189,7 +198,8 @@ add_action('after_setup_theme', 'ak_register_menus');
 // ===============================
 // AK Menu Classes & Effects
 // ===============================
-function ak_add_nav_link_class($atts, $item, $args) {
+function ak_add_nav_link_class($atts, $item, $args)
+{
     if ($args->theme_location == 'primary_menu') {
         $atts['class'] = 'transition font-bold text-[10px] duration-300 hover:text-blue-600 block px-4';
     }
@@ -197,20 +207,24 @@ function ak_add_nav_link_class($atts, $item, $args) {
 }
 add_filter('nav_menu_link_attributes', 'ak_add_nav_link_class', 10, 3);
 
-function ak_nav_menu_item_classes($classes, $item, $args) {
+function ak_nav_menu_item_classes($classes, $item, $args)
+{
     if ($args->theme_location == 'primary_menu') {
         $classes[] = 'relative group';
     }
     return $classes;
 }
 add_filter('nav_menu_css_class', 'ak_nav_menu_item_classes', 10, 3);
+add_filter('show_admin_bar', '__return_false');
+
 
 add_action('wp_enqueue_scripts', 'ak_theme_assets');
 
 
 
 // Theme Customizer function
-function ak_customize_banner($wp_customize) {
+function ak_customize_banner($wp_customize)
+{
 
     /* =========================
        1️⃣ SECTION ADD
@@ -253,7 +267,8 @@ add_action('customize_register', 'ak_customize_banner');
 // ============================
 // About Card Section - Padding & Margin Control with Stepper
 // ============================
-function ak_box_customizer($wp_customize) {
+function ak_box_customizer($wp_customize)
+{
 
     // নতুন Section বানাচ্ছি
     $wp_customize->add_section('about_card_section', array(
@@ -396,8 +411,13 @@ add_action('customize_register', 'ak_box_customizer');
 
 
 // anamation aosenque
-function ak_enqueue_aos_assets() {
-
- 
-}
+function ak_enqueue_aos_assets() {}
 add_action('wp_enqueue_scripts', 'ak_enqueue_aos_assets');
+
+
+// ====================================
+// Custom Post Type: Service Cards
+// ====================================
+if (file_exists(get_template_directory() . '/src/functions/sarviceCardFunction.php')) {
+    require get_template_directory() . '/src/functions/sarviceCardFunction.php';
+}
